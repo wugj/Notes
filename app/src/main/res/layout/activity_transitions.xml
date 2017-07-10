@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_transitions"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    tools:context="jt.com.notes.activity.TransitionsActivity">
+    <View
+        android:id="@+id/holder_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+
+        android:background="#055"/>
+
+    <Button
+        android:id="@+id/fab_button"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:transitionName="share"
+        android:layout_marginRight="16dp"
+
+        android:background="@drawable/shape_circle"
+        android:elevation="5dp"
+        android:layout_below="@id/holder_view"
+        android:layout_marginTop="-26dp"
+        android:layout_alignParentRight="true"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        android:layout_below="@id/holder_view"
+        >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/button4"
+            android:layout_alignParentLeft="true"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/button"
+            android:layout_below="@+id/button4"
+            android:layout_marginTop="10dp"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
