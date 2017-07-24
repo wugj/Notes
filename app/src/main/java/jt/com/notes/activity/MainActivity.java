@@ -3,6 +3,10 @@ package jt.com.notes.activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,6 +21,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HandlerThread handlerThread = new HandlerThread("asd");
+                new Handler(Looper.myLooper()){
+                    @Override
+                    public void handleMessage(Message msg) {
+                        super.handleMessage(msg);
+                    }
+                };
+
+            }
+        }).start();
+
     }
 
     public void explode(View view){
