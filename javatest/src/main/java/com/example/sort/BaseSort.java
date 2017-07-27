@@ -10,8 +10,11 @@ package com.example.sort;
 
 public class BaseSort {
     protected void swap(int[] data, int i, int j){
-        int temp = data[i];
-        data[i] = data[j];
-        data[j] = temp;
+        data[i] = data[i] ^ data[j];
+        data[j] = data[i] ^ data[j];
+        data[i] = data[i] ^ data[j];
+//        int temp = data[i];
+//        data[i] = data[j];
+//        data[j] = temp;
     }
 }

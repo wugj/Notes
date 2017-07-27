@@ -8,14 +8,23 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+                  android:taskAffinity="com.note2"
+                  android:launchMode="singleTask"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
         </activity>
         <activity android:name=".activity.TransitionsActivity">
+        </activity>
+        <activity android:name=".activity.Main2Activity"
+                  android:taskAffinity="com.note234123412431234"
+            >
+
         </activity>
     </application>
 

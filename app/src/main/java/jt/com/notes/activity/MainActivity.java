@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new Thread(new Runnable() {
+      /*  new Thread(new Runnable() {
             @Override
             public void run() {
                 HandlerThread handlerThread = new HandlerThread("asd");
@@ -34,16 +31,18 @@ public class MainActivity extends AppCompatActivity {
                 };
 
             }
-        }).start();
+        }).start();*/
 
     }
 
     public void explode(View view){
-        intent = new Intent(this, TransitionsActivity.class);
-        intent.putExtra("flag", 0);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
-        }
+        new Handler()
+        startActivity(new Intent(this, Main2Activity.class));
+//        intent = new Intent(this, TransitionsActivity.class);
+//        intent.putExtra("flag", 0);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+//            startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+//        }
     }
 
     public void slide(View view){

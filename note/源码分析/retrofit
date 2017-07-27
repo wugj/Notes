@@ -1,0 +1,8 @@
+1、通过build的方式生成对象，其中可以加入知道的baseUrl，多个callAdapter（RxJavaCallAdapterFactory），
+    多个covertAdapter（GsonConverterFactory），实现callFactory接口的类（默认okHttp3）
+
+1、代理模式拦截调用，查找methodHandle，没有找到构造methodHandle，通过读取方法的返回值，和返回值里的泛型，确定callAdapter和covertAdapter，
+    读取注解生成requestfactory
+2、构造okHttpCall,使用calladapter的adp方法调用（返回obserable.creat（）），
+    在okhttpCall中通过callFactory和requestFactory，构造真实的call，并执行（本文走的okthhp3的网络调用）同步，返回结果中调用
+    convertAdapter转换数据格式，返回给callAdapter，在返回给调用者

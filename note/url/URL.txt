@@ -9,3 +9,16 @@
 
 //排序算法
   http://blog.csdn.net/morewindows/article/details/6684558
+
+//GC
+  http://www.jianshu.com/p/24c074138efa       //1
+  http://www.jianshu.com/p/7c708a66ff42       //2
+  http://blog.csdn.net/mine_song/article/details/60953669
+
+//okhttp
+  http://www.jianshu.com/p/27c1554b7fee
+  https://blog.piasy.com/2016/07/11/Understand-OkHttp/  责任链模式
+  https://blog.piasy.com/2016/08/04/Understand-Okio/
+
+//rx
+  https://blog.piasy.com/2016/09/15/Understand-RxJava/

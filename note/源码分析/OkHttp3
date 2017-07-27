@@ -1,0 +1,6 @@
+1、dispatcher中只是调度线程中的运行call的状态队列，有准备队列，执行中同步队列，执行中异步队列
+2、client初始化
+3、构造request
+4、生成realCall并执行调用
+5、通过责任链的方式 走过每一个interceptors，      okio封装socket
+6、返回数据
