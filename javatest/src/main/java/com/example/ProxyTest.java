@@ -24,6 +24,10 @@ public class ProxyTest {
     }
 
     private static void dynamicProxyTest2() {
+
+//        Boolean Byte 1 Short 2 Character 2 Long 8 Float 4 Double 8 Integer 4
+
+
         Account account = (Account) new DymnicAccountProxy().newInstance(new AccountImpl());
         account.getAcount();
         account.queryAccount();
