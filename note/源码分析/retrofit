@@ -1,8 +1,22 @@
-1��ͨ��build�ķ�ʽ���ɶ������п��Լ���֪����baseUrl�����callAdapter��RxJavaCallAdapterFactory����
-    ���covertAdapter��GsonConverterFactory����ʵ��callFactory�ӿڵ��ࣨĬ��okHttp3��
+1、代理拦截， 判断方法是否是method.getDeclaringClass()判断是否是object定义都方法来判断是否调用方法本身，注意接口是没有集成都
+2、判断是否是平台默认都方法  这里是安卓 默认跳过
+3、通过map 获取method解析后都结果集， 没有，开始解析
+        a、根据method.getGenericReturnType()判断 callAdapter、coverAdapter
+        b、解析注解
+        c、生存method对应都serviceMethod放入集合map中      其中callfactory是直接使用配置的
+        d、通过serviceMethod 生成OkHttpCall
+        e、调用callAdapter都adapt（okhttpCall）
 
-1������ģʽ���ص��ã�����methodHandle��û���ҵ�����methodHandle��ͨ����ȡ�����ķ���ֵ���ͷ���ֵ��ķ��ͣ�ȷ��callAdapter��covertAdapter��
-    ��ȡע������requestfactory
-2������okHttpCall,ʹ��calladapter��adp�������ã�����obserable.creat��������
-    ��okhttpCall��ͨ��callFactory��requestFactory��������ʵ��call����ִ�У������ߵ�okthhp3��������ã�ͬ�������ؽ���е���
-    convertAdapterת�����ݸ�ʽ�����ظ�callAdapter���ڷ��ظ�������
+
+1、通过build的方式生成对象，其中可以加入知道的baseUrl，多个  返回类型callAdapter（RxJavaCallAdapterFactory ），
+    多个 返回数据结构covertAdapter（GsonConverterFactory），实现callFactory接口的类（默认okHttp3）
+
+1、代理模式拦截调用，查找methodHandle，没有找到构造methodHandle，通过读取方法的返回值，和返回值里的泛型，确定callAdapter和covertAdapter，
+    读取注解生成requestfactory
+2、构造okHttpCall,使用calladapter的adp方法调用（返回obserable.creat（）），
+    在okhttpCall中通过callFactory和requestFactory，构造真实的call，并执行（本文走的okthhp3的网络调用）同步，返回结果中调用
+    convertAdapter转换数据格式，返回给callAdapter，在返回给调用者
+    
+    
+    附录：method.getDeclaringClass() 获取方法定义都类
+         method.getGenericReturnType()获取方法返回类型
