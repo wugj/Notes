@@ -1,0 +1,5 @@
+1、跳转activity时候，给DLintent添加序列化对象都时候 需要设置类加载器ClassLoader pluginLoader = value.getClass().getClassLoader();
+        DLConfigs.sPluginClassloader = pluginLoader; // 代理activity在oncreate取这个值设置给intent（通下面相同，暂时未知是否设置一次就行了）
+        this.setExtrasClassLoader(pluginLoader); //intent都方法，intent里面内部是持有一个bundle，给bundle设置类加载器
+        
+2、
