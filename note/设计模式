@@ -1,3 +1,5 @@
+1、单一、对扩展开发，对修改闭合，父类定义多态， 对外开口单一
+
 1、单例： 系统服务 ams wms， layoutinflater（容器缓存）， 饥汉，懒汉， 静态内部类，枚举，容器缓存 全局唯一
 2、建造者（builder）： dialog  参数配置
 3、原型模式： 拷贝  class.clone()  flutter的 fish redex  state状态管理  intent.clone()
