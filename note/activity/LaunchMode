@@ -1,5 +1,5 @@
 1、standard  会进入启动该activity的任务桟，singlestance除外
-2、singleTop  跑到顶部 调用onNewIntent
-3、singleTask  先查找有没有需要的任务桟，没有就建立新的任务桟，有需要的任务桟的话，
+2、singleTop  复用桟顶activity 调用onNewIntent，桟顶不是的话同standard
+3、singleTask  通过 taskAffinity 先查找有没有需要的任务桟，没有就建立新的任务桟，有需要的任务桟的话，
                 在找有没有建立过，如果建立过，直接销毁在该实例之上的所有，调用onNewIntent，没有的话新建进桟
 4、singleInstance  独立占有一个桟
