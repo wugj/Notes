@@ -1,0 +1,24 @@
+### activity启动分析
+1. 设备启动时创建zygot进程，fork出System Server进程（AMS，WMS，PMS）
+2. Launcher也是一个app，当在桌面点击了app图标时，launcher调用context的startactivity方法
+3. startactivity其中调用了instrumentaction的startactivity方法
+4. 设置了new_task的flag
+5. instrumentaction中调用了ActivitymanagerNative的startactivity方法通知ams启动activity
+6. ams中校验安全信息，盘活判断启动的actitiy状态
+    1. task不存在的时候，暂停了launcher
+        1. fork了zygot进程，执行ActivityThread的main方法
+        2. new了activityThread调用了attch方法
+        3. 通过activitymanager调用了ams的attchapplication方法
+        4. ams通过binder调用了applicationThread的bindApplication方法
+        5. 给H的handle发送bindApplication的message
+        6. handle中创建了instrumentaction
+        7. 通过instrumentaction创建application
+        8. instrumentaciton调用了application的oncreate方法
+        9. 检查基础组件
+        10. 调用ASS（activityStackSupervisor）的realStartActivityLocked
+        11. 拼接了clientTransaction加入了resumlifeItem，和添加了LauncherActivityItem callback的
+        12. 通过clienttransction的client回调了activityThread的scheduleTransaction方法发送EXECUTE_TRANSACTION的message到H的handler
+        13. 执行clienttransction,先执行launcheractivtyItemcallback，
+        14. 回调了activtyThread的handlerlauncheractiviyt
+        15. 使用instrumentaction创建activity并回调了oncreate方法
+        16. clientTransaction执行然后lifeitem状态生命周期回调了activityThread的handstart方法
