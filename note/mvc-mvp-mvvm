@@ -1,0 +1,18 @@
+ 1、mvc
+    m： model
+    v： xml activity
+    c： activity
+    
+  
+
+2、mvp  m v 隔离  公用p时，view 的借口都得实现
+    m： model
+    v： activity
+    p： persent 
+
+3、mvvm m v隔离
+    m： model
+    v： activity
+    vm： viewmodel  逻辑
+    
+4、mpvvm 相对于mvvm  逻辑移入p 层
