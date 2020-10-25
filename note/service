@@ -1,0 +1,36 @@
+1、通过startSrvice启动  不主动关闭一只执行下去
+    1、第一开启调用 onstart方法
+    2、之后多次调用 onStartCommond方法
+    3、ondestory() 自身调用stopSelf方法 或者 stopSrvice 
+    
+2、通过bind方式启动  没有bind的services自动销毁  cs模式
+    1、实现binder方法  该binder返回当前service实例 client可以获取通过connection连接监听返回值binder
+    2、onbinde方法第一次会调用oncreate， 然后执行onbind方法
+    3、unBind
+    
+    
+如何保证Service不被杀死？
+
+  onStartCommand方式中，返回START_STICKY
+  
+    1、START_NOT_STICKY   当Service运行的进程被Android系统强制杀掉之后，不会重新创建该Service。
+    2、START_STICKY  重启 但是没有intent
+    3、START_REDELIVER_INTENT   带intent
+    
+    
+前台进程foreground_app
+可视进程visible_app
+次要服务进程secondary_server
+后台进程hiddena_app
+内容供应节点content_provider
+空进程empty_app
+
+
+通信
+
+  1、重复start
+  2、bind 拿到对象
+  3、messenger  intent.putExtra(“Messenger”,new Messenger(mHandler));
+  4、aidl
+  5、广播
+
