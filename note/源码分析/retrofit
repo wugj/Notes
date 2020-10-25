@@ -1,5 +1,17 @@
-1、代理拦截， 判断方法是否是method.getDeclaringClass()判断是否是object定义都方法来判断是否调用方法本身，注意接口是没有集成都
-2、判断是否是平台默认都方法  这里是安卓 默认跳过
+1、建造者模式配置了calladapterfactory ConverterFactory（request， response）， 网络请求库（实现 okhttp3 的call 接口）默认okhttp3， 判断平台android
+2、create 生成代理类， 调用方式时代理拦截调用
+3、object方法  接口方法体（跳过 java8）
+4、获取serviceMethod， 查找缓存，没有，开始解析
+        1、根据返回类型获取calldapterfactory， cverterfactory
+        2、根据方法注解，参数类型，参数注解生成网络请求信息
+        3、保存到serviceMEthod
+5、生成 retrofit的 OkHttpCall
+6、调用calladapterfactory的adpt方法  rxjava拼接返回了CallEnqueueObservable 或者 CallExecuteObservable
+7、observable订阅时调用了 subscribeActual
+8、调用了网络请求，通过coverterfactoy转换了requst，返回值根据coverterfactory转化成我们需要的数据，发送出来
+
+
+
 3、通过map 获取method解析后都结果集， 没有，开始解析
         a、根据method.getGenericReturnType()判断 callAdapter、coverAdapter
         b、解析注解
